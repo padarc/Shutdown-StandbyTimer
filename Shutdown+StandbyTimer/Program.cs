@@ -113,7 +113,9 @@ namespace Shutdown_StandbyTimer
         static void InitializeShutdown()
         {
             Console.WriteLine("Initializing Shutdown...");
-            Process.Start("shutdown", "/s /t 0");
+            Process.Start("shutdown", "/s /t 10");
+            Console.WriteLine("Shutting down in 10 seconds...");
+            Console.WriteLine();
             Console.WriteLine("All done, exiting ...");
         }
     }
