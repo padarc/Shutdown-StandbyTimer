@@ -98,7 +98,7 @@ namespace Shutdown_StandbyTimer
             else if (Choice == 2)
             {
                 ClearConsoleAndDisplayHeader();
-                InitializeShutdown();
+                InitializeShutdown(); kk
             }
         }
 
