@@ -17,7 +17,7 @@ namespace Shutdown_StandbyTimer
         //Import for standby
         [DllImport("Powrprof.dll", CharSet = CharSet.Auto, ExactSpelling = true)]
         public static extern bool SetSuspendState(bool hiberate, bool forceCritical, bool disableWakeEvent);
-        //
+        
 
         static void Main(string[] args)
         {
