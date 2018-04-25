@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Shutdown_StandbyTimer
 {
@@ -35,6 +36,7 @@ namespace Shutdown_StandbyTimer
 
         static void ClearConsoleAndDisplayHeader()
         {
+            Console.Title = ("Shutdown+StandbyTimer");
             Console.Clear();
             Console.WriteLine("#########################");
             Console.WriteLine("# Shutdown+StandbyTimer #");
@@ -77,12 +79,14 @@ namespace Shutdown_StandbyTimer
             int MsRemaining =  MinuteInput * 60000;
             ClearConsoleAndDisplayHeader();
             Console.Write("Minutes remaining: " + MsRemaining / 60000);
+            Console.Title = (MsRemaining / 60000 + " Minutes remaining");
             while (MsRemaining > 0)
             {
                 System.Threading.Thread.Sleep(60000);
                 MsRemaining = MsRemaining - 60000;
                 ClearConsoleAndDisplayHeader();
                 Console.Write("Minutes remaining: " + MsRemaining / 60000);
+                Console.Title = (MsRemaining / 60000 + " Minutes remaining");
             }
 
             if (Choice == 1)
@@ -102,8 +106,7 @@ namespace Shutdown_StandbyTimer
         {
             Console.WriteLine("Initializing Standby...");
             SetSuspendState(false, true, true);
-            Console.WriteLine("All done, press any key to exit!");
-            String s = Console.ReadLine();
+            Console.WriteLine("All done, exiting ...");
 
         }
 
@@ -111,8 +114,7 @@ namespace Shutdown_StandbyTimer
         {
             Console.WriteLine("Initializing Shutdown...");
             Process.Start("shutdown", "/s /t 0");
-            Console.WriteLine("All done, press any key to exit!");
-            String s = Console.ReadLine();
+            Console.WriteLine("All done, exiting ...");
         }
     }
 }
